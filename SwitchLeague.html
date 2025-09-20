@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Switch League</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link href="SwitchLeague.css" rel="stylesheet" type="text/css" />
+    <script src="SwitchLeague.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+
+    <div class="main" id="MainOuter">
+        <div class="titleouter">
+            <div class="titletop">
+                <span>Switch League</span>
+            </div>
+            <div class="titlebottom">
+                <div class="titlebottomleft">
+                    <span>Season 2</span>
+                </div>
+                <div class="titlebottomright">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="leagueouter" id="LeagueOuter">
+
+        </div>
+
+        <div class="gamesouter" id="GamesOuter">
+            
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="" style="display:none;" id="LeagueRow_Template">
+        <div class="leaguerow $HEADER$" onclick="LeagueRow_CLick('$NAME$');" id="LeagueRow_$NAME$">
+            <div class="id">
+                <span>$ID$</span>
+            </div>
+            <div class="name">
+                <span>$NAME$</span>
+            </div>
+            <div class="wl">
+                <span>$WL$</span>
+            </div>
+            <div class="prc">
+                <span>$PRC$</span>
+            </div>
+            <div class="gf">
+                <span>$GF$</span>
+            </div>
+            <div class="ga">
+                <span>$GA$</span>
+            </div>
+            <div class="gd">
+                <span>$GD$</span>
+            </div>
+            <div class="streak">
+                <span>$STREAK$</span>
+            </div>
+            <div class="last5">
+                <div class="last5inner">
+                    $LAST5$
+                </div>
+                <!-- <div class="last5outer win">
+                    <span>&check;</span>
+                </div>
+                <div class="last5outer lose">
+                    <span>&cross;</span>
+                </div> -->
+                <!-- <span>$LAST5$</span> -->
+            </div>
+            <div class="change">
+                <span>$CHANGE$</span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div style="display:none;" id="ScoresRow_Template">
+        <div class="scorerow $HEADER$">
+            <div class="name">
+                $NAME$
+            </div>
+            <div class="date">
+                $DATE$
+            </div>
+            <div class="hometeam $HOMEWIN$ $HOMELOSE$">
+                $HOMETEAM$
+                <div class="record wrong">
+                    <span>$HOMERECORDWRONG$</span>
+                </div>
+                <div class="record correct">
+                    <span>$HOMERECORDCORRECT$</span>
+                </div>
+            </div>
+            <div class="homescore">
+                $HOMESCORE$
+            </div>
+            <div class="awayteam $AWAYWIN$ $AWAYLOSE$">
+                $AWAYTEAM$
+                <div class="record wrong">
+                    <span>$AWAYRECORDWRONG$</span>
+                </div>
+                <div class="record correct">
+                    <span>$AWAYRECORDCORRECT$</span>
+                </div>
+            </div>
+            <div class="awayscore">
+                $AWAYSCORE$
+            </div>
+            <div class="odds">
+                $ODDS$
+            </div>
+            <div class="notes">
+                $NOTES$
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>
