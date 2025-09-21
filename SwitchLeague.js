@@ -1211,6 +1211,43 @@ function BuildLeague() {
 
     }
 
+
+    // and avg odds
+    // also do the streak...
+    for (g = 0; g < gamesArray.length; g++){
+
+        var totalOdds = 0.00;
+        var name = ''
+        for (i = 0; i < gamesArray[g].length; i++) {
+            name = gamesArray[g][i].Name;
+
+            if (gamesArray[g][i].Result == '') {
+                continue;
+            }
+
+            // take the odds from each week, 
+            // convert to decimal
+            // add to running total
+            // then avg the dec
+            // then simplyfy back to fractions
+            var oddsArray = gamesArray[g][i].Odds.split('/');
+            var oddsDec = (oddsArray[0] / oddsArray[1]) + 1;
+            totalOdds+= oddsDec;
+        }
+
+        var avgOddsDec = totalOdds / gamesArray[g].length;
+        // then simplyfy/...
+        avgOddsDec = (avgOddsDec -1) * 100.00;
+        var avgOdds = reduce(Math.round(avgOddsDec), 100);
+
+        // find this user in the league, and set avgodds
+        for (l = leagueList.length-1; l > -1; l--) {
+            if (leagueList[l].Name == name) {
+                leagueList[l].AvgOdds = avgOdds[0] + '/' + avgOdds[1];
+                break;
+            }
+        }
+    }
     
     
     // and build the HTML... league backwards
@@ -1225,6 +1262,7 @@ function BuildLeague() {
                             .replace('$STREAK$', 'Streak')
                             .replace('$LAST5$', 'Form')
                             .replace('$CHANGE$', '&nbsp;')
+                            .replace("$AVGODDS$", 'Avg Odds')
                             
                         ;
 
@@ -1262,6 +1300,7 @@ function BuildLeague() {
                                 .replace('$LAST5$', last5Html)
                                 // .replace('$CHANGE$', leagueList[l].Change)
                                 .replace('$CHANGE$', "&nbsp;")
+                                .replace('$AVGODDS$', leagueList[l].AvgOdds)
                             ;
     }
 
@@ -1573,6 +1612,16 @@ function GetRecord(teamName) {
 
 
 
+// https://stackoverflow.com/questions/4652468/is-there-a-javascript-function-that-reduces-a-fraction
+function reduce(numerator,denominator){
+  var gcd = function gcd(a,b){
+    return b ? gcd(b, a%b) : a;
+  };
+  gcd = gcd(numerator,denominator);
+  return [numerator/gcd, denominator/gcd];
+}
+
+
 
 
 
@@ -1593,7 +1642,7 @@ function Game(name, date, home, away, toWin, result, homeScore, awayScore, odds)
     this.Odds = odds;
 }
 
-function League(name, win, lose, points, percent, goalsFor, goalsAgainst, goalsDiff, streak, last5, previousPosition, change) {
+function League(name, win, lose, points, percent, goalsFor, goalsAgainst, goalsDiff, streak, last5, previousPosition, change, avgOdds) {
     this.Name = (name == undefined ? '' : name);
     this.Win = (win == undefined ? 0 : win);
     this.Lose = (lose == undefined ? 0 : lose);
@@ -1606,6 +1655,7 @@ function League(name, win, lose, points, percent, goalsFor, goalsAgainst, goalsD
     this.Last5 = (last5 == undefined ? '' : last5);
     this.PreviousPosition = (previousPosition == undefined ? 0 : previousPosition);
     this.Change = (change == undefined ? 0 : change);
+    this.AvgOdds = (avgOdds == undefined ? "" : avgOdds);
 
 
 }

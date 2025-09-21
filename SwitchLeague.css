@@ -148,7 +148,7 @@
 
     .leaguerow .gf {
         float: left;
-        width: 10%;
+        width: 5%;
         border-right: 2px solid #e3e3e3;
         text-align: center;
         padding: 5px 0;
@@ -156,13 +156,21 @@
 
     .leaguerow .ga {
         float: left;
-        width: 10%;
+        width: 5%;
         border-right: 2px solid #e3e3e3;
         text-align: center;
         padding: 5px 0;
     }
 
     .leaguerow .gd {
+        float: left;
+        width: 5%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .leaguerow .avgodds {
         float: left;
         width: 10%;
         border-right: 2px solid #e3e3e3;
