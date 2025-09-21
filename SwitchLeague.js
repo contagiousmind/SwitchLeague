@@ -1005,9 +1005,9 @@ function SetupGames() {
         , 'Colchester'
         , 'Bristol Rovers'
         , 'A'
-        , ''
-        , 0
-        , 0
+        , 'D'
+        , 1
+        , 1
         , '8/5'
     ));
 
@@ -1017,7 +1017,7 @@ function SetupGames() {
         , 'Huddersfield'
         , 'Burton'
         , 'H'
-        , ''
+        , 'D'
         , 0
         , 0
         , '11/20'
@@ -1029,9 +1029,9 @@ function SetupGames() {
         , 'MK Dons'
         , 'Accrington'
         , 'H'
-        , ''
-        , 0
-        , 0
+        , 'A'
+        , 1
+        , 2
         , '11/20'
     ));
 
@@ -1041,9 +1041,9 @@ function SetupGames() {
         , 'Plymouth'
         , 'Peterborough'
         , 'H'
-        , ''
+        , 'A'
         , 0
-        , 0
+        , 1
         , '17/20'
     ));
 }
