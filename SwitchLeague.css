@@ -248,7 +248,7 @@
 
         .scorerow.header .hometeam {
             float:left;
-            width: 30%;
+            width: 33%;
             border-right: 2px solid #e3e3e3;
             text-align: center;
             padding: 5px 1px 5px 1px;
@@ -268,7 +268,7 @@
 
         .scorerow.header .awayteam {
             float:left;
-            width: 30%;
+            width: 33%;
             border-right: 2px solid #e3e3e3;
             text-align: center;
             padding: 5px 1px 5px 1px;
@@ -304,7 +304,7 @@
 
     .scorerow .hometeam {
         float:left;
-        width: 24%;
+        width: 27%;
         border-right: 2px solid #e3e3e3;
         /*text-align: center;*/
         padding: 5px 0 5px 1%;
@@ -349,7 +349,7 @@
 
     .scorerow .awayteam {
         float:left;
-        width: 24%;
+        width: 27%;
         border-right: 2px solid #e3e3e3;
         /*text-align: center;*/
         padding: 5px 0 5px 1%;

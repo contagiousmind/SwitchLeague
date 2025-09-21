@@ -659,6 +659,7 @@ function SetupGames() {
         , 'H'
         , 2
         , 0
+        , '31/10'
     ));
 
     RCGameList.push(new Game(
@@ -670,6 +671,7 @@ function SetupGames() {
         , 'H'
         , 1
         , 0
+        , '3/4'
     ));
 
     TCGameList.push(new Game(
@@ -681,6 +683,7 @@ function SetupGames() {
         , 'H'
         , 2
         , 0
+        , '1/1'
     ));
 
     TSGameList.push(new Game(
@@ -692,6 +695,7 @@ function SetupGames() {
         , 'A'
         , 0
         , 1
+        , '5/6'
     ));
 
 
@@ -961,6 +965,7 @@ function SetupGames() {
         , 'H'
         , 1
         , 0
+        , '27/20'
     ));
 
     RCGameList.push(new Game(
@@ -972,6 +977,7 @@ function SetupGames() {
         , 'A'
         , 0
         , 1
+        , '3/4'
     ));
 
     TCGameList.push(new Game(
@@ -983,6 +989,7 @@ function SetupGames() {
         , 'D'
         , 1
         , 1
+        , '8/5'
     ));
 
     TSGameList.push(new Game(
@@ -994,6 +1001,7 @@ function SetupGames() {
         , 'H'
         , 3
         , 2
+        , '5/6'
     ));
 
 
