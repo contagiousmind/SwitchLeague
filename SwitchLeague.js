@@ -1054,6 +1054,57 @@ function SetupGames() {
         , 1
         , '17/20'
     ));
+
+    // Week 9 picks
+    var weekDate = '2025-09-27';
+    SMGameList.push(new Game(
+           'SM'
+        ,  weekDate
+        , 'Southampton'
+        , 'Middlesbrough'
+        , 'A'
+        , ''
+        , 0
+        , 0
+        , '12/5'
+    ));
+
+    RCGameList.push(new Game(
+          'RC'
+        ,  weekDate
+        , 'Chesterfield'
+        , 'Newport'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '21/50'
+    ));
+
+    TCGameList.push(new Game(
+          'TC'
+        ,  weekDate
+        , 'Bradford City'
+        , 'Blackpool'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '21/20'
+    ));
+
+    TSGameList.push(new Game(
+           'TS'
+        ,  weekDate
+        , 'Gillingham'
+        , 'Harrogate'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '7/10'
+    ));
+
 }
 
 
@@ -1212,8 +1263,8 @@ function BuildLeague() {
     }
 
 
-    // and avg odds
-    // also do the streak...
+    // and avg odds?
+    // https://blog.betway.com/betting-terms/how-do-betting-odds-work-and-how-to-read-them-betting-odds-explained/
     for (g = 0; g < gamesArray.length; g++){
 
         var totalOdds = 0.00;

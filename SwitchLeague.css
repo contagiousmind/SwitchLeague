@@ -1,10 +1,10 @@
-﻿.main {
-    /* float:left;
+﻿/* .main {
+    float:left;
     width:90%;
     height: 50%;
-    padding:10px; */
-    
-}
+    padding:10px;     
+} 
+*/
 
 :root {
     --blue: #00c3e3;
@@ -22,12 +22,12 @@
 }
 
 
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
     body {
         
 
     }
-  }
+  } */
 
 .titleouter {
     float:left;
