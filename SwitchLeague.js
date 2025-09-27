@@ -1063,9 +1063,9 @@ function SetupGames() {
         , 'Southampton'
         , 'Middlesbrough'
         , 'A'
-        , ''
-        , 0
-        , 0
+        , 'D'
+        , 1
+        , 1
         , '12/5'
     ));
 
@@ -1075,9 +1075,9 @@ function SetupGames() {
         , 'Chesterfield'
         , 'Newport'
         , 'H'
-        , ''
-        , 0
-        , 0
+        , 'H'
+        , 4
+        , 1
         , '21/50'
     ));
 
@@ -1087,8 +1087,8 @@ function SetupGames() {
         , 'Bradford City'
         , 'Blackpool'
         , 'H'
-        , ''
-        , 0
+        , 'H'
+        , 1
         , 0
         , '21/20'
     ));
@@ -1099,9 +1099,9 @@ function SetupGames() {
         , 'Gillingham'
         , 'Harrogate'
         , 'H'
-        , ''
+        , 'A'
         , 0
-        , 0
+        , 1
         , '7/10'
     ));
 
