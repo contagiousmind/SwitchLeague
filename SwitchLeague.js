@@ -1105,6 +1105,56 @@ function SetupGames() {
         , '7/10'
     ));
 
+     // Week 10 picks
+    var weekDate = '2025-10-04';
+    SMGameList.push(new Game(
+           'SM'
+        ,  weekDate
+        , 'Cheltenham'
+        , 'Fleetwood'
+        , 'A'
+        , ''
+        , 0
+        , 0
+        , '11/10'
+    ));
+
+    RCGameList.push(new Game(
+          'RC'
+        ,  weekDate
+        , 'Lincoln'
+        , 'Exeter'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '3/5'
+    ));
+
+    TCGameList.push(new Game(
+          'TC'
+        ,  weekDate
+        , 'Watford'
+        , 'Oxford Utd'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '10/11'
+    ));
+
+    TSGameList.push(new Game(
+           'TS'
+        ,  weekDate
+        , 'Cardiff'
+        , 'Leyton Orient'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '13/20'
+    ));
+
 }
 
 
