@@ -1113,8 +1113,8 @@ function SetupGames() {
         , 'Cheltenham'
         , 'Fleetwood'
         , 'A'
-        , ''
-        , 0
+        , 'H'
+        , 2
         , 0
         , '11/10'
     ));
@@ -1125,9 +1125,9 @@ function SetupGames() {
         , 'Lincoln'
         , 'Exeter'
         , 'H'
-        , ''
+        , 'A'
         , 0
-        , 0
+        , 1
         , '3/5'
     ));
 
@@ -1137,9 +1137,9 @@ function SetupGames() {
         , 'Watford'
         , 'Oxford Utd'
         , 'H'
-        , ''
-        , 0
-        , 0
+        , 'H'
+        , 2
+        , 1
         , '10/11'
     ));
 
@@ -1149,9 +1149,9 @@ function SetupGames() {
         , 'Cardiff'
         , 'Leyton Orient'
         , 'H'
-        , ''
-        , 0
-        , 0
+        , 'H'
+        , 4
+        , 3
         , '13/20'
     ));
 
