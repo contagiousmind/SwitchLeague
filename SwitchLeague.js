@@ -1155,6 +1155,57 @@ function SetupGames() {
         , '13/20'
     ));
 
+
+  // Week 11 picks
+    var weekDate = '2025-10-11';
+    SMGameList.push(new Game(
+           'SM'
+        ,  weekDate
+        , 'Tranmere'
+        , 'Barnet'
+        , 'A'
+        , ''
+        , 0
+        , 0
+        , '/'
+    ));
+
+    RCGameList.push(new Game(
+          'RC'
+        ,  weekDate
+        , ''
+        , ''
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '/'
+    ));
+
+    TCGameList.push(new Game(
+          'TC'
+        ,  weekDate
+        , ''
+        , ''
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '/'
+    ));
+
+    TSGameList.push(new Game(
+           'TS'
+        ,  weekDate
+        , 'Stockport'
+        , 'Blackpool'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '/'
+    ));
+
 }
 
 
