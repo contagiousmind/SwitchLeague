@@ -1164,34 +1164,34 @@ function SetupGames() {
         , 'Tranmere'
         , 'Barnet'
         , 'A'
-        , ''
+        , 'A'
         , 0
-        , 0
-        , '/'
+        , 2
+        , '23/20'
     ));
 
     RCGameList.push(new Game(
           'RC'
         ,  weekDate
-        , ''
-        , ''
+        , 'AFC Wimbledon'
+        , 'Port Vale'
         , 'H'
-        , ''
-        , 0
-        , 0
-        , '/'
+        , 'D'
+        , 1
+        , 1
+        , '13/8'
     ));
 
     TCGameList.push(new Game(
           'TC'
         ,  weekDate
-        , ''
-        , ''
+        , 'Grimsby'
+        , 'Colchester'
         , 'H'
-        , ''
-        , 0
-        , 0
-        , '/'
+        , 'A'
+        , 1
+        , 2
+        , '4/5'
     ));
 
     TSGameList.push(new Game(
@@ -1200,10 +1200,10 @@ function SetupGames() {
         , 'Stockport'
         , 'Blackpool'
         , 'H'
-        , ''
+        , 'H'
+        , 1
         , 0
-        , 0
-        , '/'
+        , '4/6'
     ));
 
 }
