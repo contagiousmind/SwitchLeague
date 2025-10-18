@@ -1206,6 +1206,56 @@ function SetupGames() {
         , '4/6'
     ));
 
+     // Week 12 picks
+    var weekDate = '2025-10-18';
+    SMGameList.push(new Game(
+           'SM'
+        ,  weekDate
+        , 'Accrington'
+        , 'Swindon'
+        , 'A'
+        , ''
+        , 0
+        , 0
+        , '19/20'
+    ));
+
+    RCGameList.push(new Game(
+          'RC'
+        ,  weekDate
+        , 'Sheffield Utd'
+        , 'Watford'
+        , 'A'
+        , ''
+        , 0
+        , 0
+        , '5/2'
+    ));
+
+    TCGameList.push(new Game(
+          'TC'
+        ,  weekDate
+        , 'Crystal Palace'
+        , 'Bournemouth'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '5/4'
+    ));
+
+    TSGameList.push(new Game(
+           'TS'
+        ,  weekDate
+        , 'Bradford City'
+        , 'Barnsley'
+        , 'H'
+        , ''
+        , 0
+        , 0
+        , '11/10'
+    ));
+
 }
 
 
