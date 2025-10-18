@@ -1214,8 +1214,8 @@ function SetupGames() {
         , 'Accrington'
         , 'Swindon'
         , 'A'
-        , ''
-        , 0
+        , 'H'
+        , 4
         , 0
         , '19/20'
     ));
@@ -1226,8 +1226,8 @@ function SetupGames() {
         , 'Sheffield Utd'
         , 'Watford'
         , 'A'
-        , ''
-        , 0
+        , 'H'
+        , 1
         , 0
         , '5/2'
     ));
@@ -1238,9 +1238,9 @@ function SetupGames() {
         , 'Crystal Palace'
         , 'Bournemouth'
         , 'H'
-        , ''
-        , 0
-        , 0
+        , 'D'
+        , 3
+        , 3
         , '5/4'
     ));
 
@@ -1250,9 +1250,9 @@ function SetupGames() {
         , 'Bradford City'
         , 'Barnsley'
         , 'H'
-        , ''
-        , 0
-        , 0
+        , 'D'
+        , 2
+        , 2
         , '11/10'
     ));
 
