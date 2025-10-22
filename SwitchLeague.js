@@ -3,17 +3,11 @@ $(function () {
 
     // SetupGames_Year1();
 
-    SetupGames();
-
-    BuildLeague();
-
-    BuildLastScores();
-
-    // set week in title
-    $(".titlebottomright").html("Week " + SMGameList.length);
+    GetData('Season2', SetupGames);
     
 });
 
+// user game lists
 var SMGameList = new Array();
 var RCGameList = new Array();
 var TCGameList = new Array();
@@ -36,6 +30,89 @@ var sadFaceList = new Array();
     sadFaceList.push("&#128557;");              // 	LOUDLY CRYING FACE
     sadFaceList.push("&#128560;");              // FACE WITH OPEN MOUTH AND COLD SWEAT
     sadFaceList.push("&#128566;");              // 	FACE WITHOUT MOUTH
+
+
+function SetupGames(data) {
+
+    // get the number of users...
+    var userList = new Array();
+    for (i=1; i < data.values.length; i++) {
+        var userName = data.values[i][0];
+
+        if (!userList.includes(userName))
+        {
+            userList.push(userName);
+        }
+
+        var thisUSerList = new Array();
+        if (userName == 'Seb') {
+            thisUSerList = SMGameList;
+        } else if (userName == 'Russ') {
+            thisUSerList = RCGameList;
+        } else if (userName == 'Tom') {
+            thisUSerList = TCGameList;
+        } else if (userName == 'Smith') {
+            thisUSerList = TSGameList;
+        }
+
+        thisUSerList.push(new Game(
+                  data.values[i][0]                         //     'SM'
+                , data.values[i][1]                         // ,  weekDate
+                , data.values[i][2]                         // , 'Lincoln'
+                , data.values[i][3]                         // , 'Reading'
+                , data.values[i][4]                         // , 'A'
+                , data.values[i][5]                         // , 'H'
+                , parseInt(data.values[i][6])                // , 2
+                , parseInt(data.values[i][7])                // , 0
+                , data.values[i][8]                         // , '31/10'
+            ));
+    }
+
+
+    BuildLeague();
+
+    BuildLastScores();
+
+    // set week in title
+    $(".titlebottomright").html("Week " + SMGameList.length);
+
+
+    // now we can create our list of game arrays
+    // but that's a todo, let's 'simply' make it work for now...
+
+
+
+} 
+
+function GetData(sheetName, completeEvent) {
+
+        // photo's key - AIzaSyBnvRLQ5Wfv5MNb5q0APNsijA9xXpOYnaA
+    var aaa = 'AIzaSyBnvRLQ5Wfv5MNb5q0APNsijA9xXpOYnaA'; 
+    var spreadsheetId = '1vQ3s9xdLVtMLuY_gc8psrxSkLvdsG4_XuTEYJmuxJ4Y'; // Replace with your spreadsheet ID
+    // var sheetName = 'Sheet1'; // Replace with your sheet name
+    var url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}?key=${aaa}`;
+
+
+    Ajax(url, function(data) {
+        completeEvent.call('', data);
+        
+    }, '');
+}
+
+// https://docs.google.com/spreadsheets/d/e/2PACX-1vRB4E_6RnpLP1wWMjqcwsUvotNATB8Np3OntlXb7066ULcAHI9oqqRhucltFifPTYNd7DRNRE56oTdt/pub?output=csv
+
+
+//https://github.com/orgs/community/discussions/108921
+function Ajax(url, completeEvent, args) {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(data) {
+            completeEvent.call(this, data);
+        }
+    });
+}
+
 
 
 function SetupGames_Year1() {
@@ -646,7 +723,7 @@ function SetupGames_Year1() {
 }
 
 
-function SetupGames() {
+function SetupGames_Year2() {
 
     // Week 1 picks
     var weekDate = '2025-08-02';
@@ -678,7 +755,7 @@ function SetupGames() {
           'TC'
         ,  weekDate
         , 'Wigan'
-        , 'North Hampton'
+        , 'Northampton'
         , 'H'
         , 'H'
         , 2
@@ -781,7 +858,7 @@ function SetupGames() {
           'TC'
         ,  weekDate
         , 'Bristol City'
-        , 'CHarlton'
+        , 'Charlton'
         , 'H'
         , 'D'
         , 0
@@ -1605,13 +1682,13 @@ function LeagueRow_CLick(name) {
     $("#LeagueRow_" + name).addClass('selected');
 
 
-    if (name == "SM") {
+    if (name == "Seb") {
         gameList = SMGameList;
-    } else if (name == "RC") {
+    } else if (name == "Russ") {
         gameList = RCGameList;
-    } else if (name == "TC") {
+    } else if (name == "Tom") {
         gameList = TCGameList;
-    } else if (name == "TS") {
+    } else if (name == "Smith") {
         gameList = TSGameList;
     }
 
