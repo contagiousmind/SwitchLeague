@@ -687,12 +687,12 @@ function reduce(numerator,denominator){
 function Game(name, date, home, away, toWin, result, homeScore, awayScore, odds) {
     this.Name = name;
     this.Date = date;
-    this.Home = home;
-    this.Away = away;
-    this.ToWin = toWin;
-    this.Result = result;
-    this.HomeScore = homeScore;
-    this.AwayScore = awayScore;
+    this.Home = (home == undefined ? '' : home);
+    this.Away = (away == undefined ? '' : away);
+    this.ToWin = (toWin == undefined ? '' : toWin);
+    this.Result = (result == undefined ? '' : result);
+    this.HomeScore = (homeScore == undefined ? 0 : homeScore);
+    this.AwayScore = (awayScore == undefined ? 0 : awayScore);
 
     if (odds == undefined) {
         odds = "&nbsp;";
@@ -727,148 +727,4 @@ function Record(correct, wrong) {
 
 
 
-
-
-// function BuildLeague() {
-//     var leagueRowTemplate = $('#LeagueRow_Template').html();
-//     var html = '';
-
-//     var gamesArray = new Array();
-//     gamesArray.push(SMGameList);
-//     gamesArray.push(RCGameList);
-//     gamesArray.push(TCGameList);
-//     gamesArray.push(TSGameList);
-
-//     var leagueList = new Array();
-
-//     for (g = 0; g < gamesArray.length; g++){
-//         var SMLeague = new League();
-//         SMLeague.Name = gamesArray[g][0].Name;
-        
-//         var smW = 0;
-//         var smL = 0;
-//         var smPTS = 0;
-//         var smGF = 0;
-//         var smGA = 0;
-//         var smStreak = 'W0';
-//         var smLast5 = new Array();
-
-//         for (i = 0; i < gamesArray[g].length; i++) {
-            
-//             if (gamesArray[g][i].Result != "") {
-//                 var streakSplit = smStreak.split('');
-//                 var nextStreakNo = 0;
-
-//                 if (gamesArray[g][i].ToWin == gamesArray[g][i].Result) {
-//                     smW++;
-//                     smPTS++;
-
-//                     if (streakSplit[0] == 'W') {
-//                         nextStreakNo = parseInt(streakSplit[1]) + 1;
-//                         smStreak = 'W' + nextStreakNo;
-//                     } else {
-//                         smStreak = 'W1';
-//                     }
-//                 } else {
-//                     smL++;
-
-//                     if (streakSplit[0] == 'L') {
-//                         nextStreakNo = parseInt(streakSplit[1]) + 1;
-//                         smStreak = 'L' + nextStreakNo;
-//                     } else {
-//                         smStreak = 'L1';
-//                     }
-//                 }
-//             }
-
-
-//             if (gamesArray[g][i].ToWin == 'H') {
-//                 smGF += gamesArray[g][i].HomeScore;
-//                 smGA += gamesArray[g][i].AwayScore;
-//             } else {
-//                 smGA += gamesArray[g][i].HomeScore;
-//                 smGF += gamesArray[g][i].AwayScore;
-//             }
-//         }
-
-//         SMLeague.Win = smW;
-//         SMLeague.Lose = smL;
-//         SMLeague.Points = smPTS;
-//         SMLeague.Percent =  smW / (smW + smL);
-//         SMLeague.GoalsFor = smGF;
-//         SMLeague.GoalsAgainst = smGA;
-//         SMLeague.GoalsDiff = smGF - smGA;
-//         SMLeague.Streak = smStreak;
-
-//         // and just go backwards for 5 to get the last 5 ?
-//         for (i = gamesArray[g].length-1; i > gamesArray[g].length-6; i--) {
-         
-//             if (gamesArray[g][i].ToWin == gamesArray[g][i].Result) {
-//                 smLast5 = 'W-' + smLast5;
-//             } else {
-//                 smLast5 = 'L-' + smLast5;
-//             }
-//         }
-
-//         SMLeague.Last5 = smLast5.substring(0, smLast5.length-1);
-
-//         leagueList.push(SMLeague);
-//     }
-
-//     // sort the leagues by pts, then GD
-//     // https://typeofnan.dev/sort-array-objects-multiple-properties-javascript/
-    
-//     leagueList.sort((a, b) => {
-//         // Only sort on Points if not identical
-//         if (a.Points < b.Points) return -1;
-//         if (a.Points > b.Points) return 1;
-//         // Sort on GD
-//         if (a.GoalsDiff < b.GoalsDiff) return -1;
-//         if (a.GoalsDiff > b.GoalsDiff) return 1;
-//         // Both idential, return 0
-//         return 0;
-//     });
-    
-
-    
-//     // and build the HTML... league backwards
-//     html += leagueRowTemplate.replace('$ID$', '&nbsp;')
-//                             .replace('$HEADER$', 'header')
-//                             .replace(/\$NAME\$/g, 'Name')
-//                             .replace('$WL$', 'W-L')
-//                             .replace('$PRC$', 'PRC')
-//                             .replace('$GF$', 'GF')
-//                             .replace('$GA$', 'GA')
-//                             .replace('$GD$', 'GD')
-//                             .replace('$STREAK$', 'Streak')
-//                             .replace('$LAST5$', 'Form')
-                            
-//                         ;
-
-
-//     var leaguePos = 0;
-//     for (l = leagueList.length-1; l > -1; l--) {
-//         leaguePos++;
-//         var leader = '';
-//         if (leaguePos == 1) {
-//             leader = 'leader';
-//         }
-
-//         html += leagueRowTemplate.replace('$ID$', leaguePos)
-//                                 .replace('$HEADER$', leader)
-//                                 .replace(/\$NAME\$/g, leagueList[l].Name)
-//                                 .replace('$WL$', leagueList[l].Win + '-' + SMLeague.Lose)
-//                                 .replace('$PRC$', leagueList[l].Percent.toString().substring(0,5))
-//                                 .replace('$GF$', leagueList[l].GoalsFor)
-//                                 .replace('$GA$', leagueList[l].GoalsAgainst)
-//                                 .replace('$GD$', leagueList[l].GoalsDiff)
-//                                 .replace('$STREAK$', leagueList[l].Streak)
-//                                 .replace('$LAST5$', leagueList[l].Last5)
-//                             ;
-//     }
-
-//     $('#LeagueOuter').html(html);
-
-
-// }
 
