@@ -82,6 +82,10 @@ function SetupGames(data) {
 
 
 
+
+    // can we build some totals too?
+    BuildTotals();
+
 } 
 
 function GetData(sheetName, completeEvent) {
@@ -666,6 +670,113 @@ function GetRecord(teamName) {
 
 
     return record;
+}
+
+
+
+function BuildTotals() {
+    var allGames = new Array();
+
+    for (i=0; i< SMGameList.length;i++) {
+        allGames.push(SMGameList[i]);
+    }
+    for (i=0; i< RCGameList.length;i++) {
+        allGames.push(RCGameList[i]);
+    }
+    for (i=0; i< TCGameList.length;i++) {
+        allGames.push(TCGameList[i]);
+    }
+    for (i=0; i< TSGameList.length;i++) {
+        allGames.push(TSGameList[i]);
+    }
+
+
+    var template = $("#TotalItem_Template").html();
+
+    // let's do... 
+    // total games
+    // total wins
+    // win ratio
+    // weekly wins
+    // weekly win avg?
+
+    var total = allGames.length;
+
+    // how many winner do we have...
+    var winners = 0;
+    for (i=0; i< allGames.length; i++) {
+        if (allGames[i].ToWin == allGames[i].Result) {
+            winners++;
+        }
+    }
+
+    var winnerRatio = (winners / total) * 100;
+
+    // how do we do weekly wins...
+    var weeklyWins = 0;
+    for(i=0; i< SMGameList.length; i++) {
+        if (
+                   SMGameList[i].ToWin == SMGameList[i].Result
+                && RCGameList[i].ToWin == RCGameList[i].Result
+                && TCGameList[i].ToWin == TCGameList[i].Result
+                && TSGameList[i].ToWin == TSGameList[i].Result
+            )
+            {
+                // we won this week!
+                weeklyWins++;
+            }
+    }
+
+    // and similar to weekly avg wins...
+    var weeklyWinningGames = new Array();
+    for(i=0; i< SMGameList.length; i++) {
+        var thisWeeklyWins = 0;
+        if (SMGameList[i].ToWin == SMGameList[i].Result) {
+            thisWeeklyWins++;
+        }
+        if (RCGameList[i].ToWin == RCGameList[i].Result) {
+            thisWeeklyWins++;
+        }
+        if (TCGameList[i].ToWin == TCGameList[i].Result) {
+            thisWeeklyWins++;
+        }
+        if (TSGameList[i].ToWin == TSGameList[i].Result) {
+            thisWeeklyWins++;
+        }
+
+        weeklyWinningGames.push(thisWeeklyWins);
+    }
+
+    var weeklyAvgWins = 0;
+    var weeklyTotalWins = 0;
+    for(i=0; i < weeklyWinningGames.length; i++) {
+        weeklyTotalWins = weeklyTotalWins + weeklyWinningGames[i];
+    }
+    weeklyAvgWins = weeklyTotalWins / weeklyWinningGames.length;
+
+
+    // and build the html
+    var html = "";
+    html+= template.replace(/\$TITLE\$/g, 'Total Picks')
+                    .replace(/\$VALUE\$/g, total)
+                ;
+    html+= template.replace(/\$TITLE\$/g, 'Winning Picks')
+                    .replace(/\$VALUE\$/g, winners)
+                ;
+    html+= template.replace(/\$TITLE\$/g, 'Win Ratio')
+                    .replace(/\$VALUE\$/g, winnerRatio.toString().substring(0, 5) + '%')
+                ;
+    html+= template.replace(/\$TITLE\$/g, 'Wins per Week')
+                    .replace(/\$VALUE\$/g, weeklyAvgWins.toString().substring(0, 4))
+                ;
+
+    html+= template.replace(/\$TITLE\$/g, 'Winning Weeks')
+                    .replace(/\$VALUE\$/g, weeklyWins)
+                ;
+
+
+
+    $("#TotalsOuter").html(html);
 }
 
 
