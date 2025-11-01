@@ -700,13 +700,20 @@ function BuildTotals() {
     // weekly wins
     // weekly win avg?
 
-    var total = allGames.length;
+    var total = 0;
+    for (i=0; i< allGames.length; i++) {
+        if (allGames[i].Result != "") {
+            total++;
+        }
+    }
 
     // how many winner do we have...
     var winners = 0;
     for (i=0; i< allGames.length; i++) {
-        if (allGames[i].ToWin == allGames[i].Result) {
-            winners++;
+        if (allGames[i].ToWin != "" && allGames[i].Result != "") {
+            if (allGames[i].ToWin == allGames[i].Result) {
+                winners++;
+            }
         }
     }
 
@@ -730,21 +737,24 @@ function BuildTotals() {
     // and similar to weekly avg wins...
     var weeklyWinningGames = new Array();
     for(i=0; i< SMGameList.length; i++) {
-        var thisWeeklyWins = 0;
-        if (SMGameList[i].ToWin == SMGameList[i].Result) {
-            thisWeeklyWins++;
-        }
-        if (RCGameList[i].ToWin == RCGameList[i].Result) {
-            thisWeeklyWins++;
-        }
-        if (TCGameList[i].ToWin == TCGameList[i].Result) {
-            thisWeeklyWins++;
-        }
-        if (TSGameList[i].ToWin == TSGameList[i].Result) {
-            thisWeeklyWins++;
-        }
+        // has this week happened yet?
+        if (SMGameList[i].Result != "") {
+            var thisWeeklyWins = 0;
+            if (SMGameList[i].ToWin == SMGameList[i].Result) {
+                thisWeeklyWins++;
+            }
+            if (RCGameList[i].ToWin == RCGameList[i].Result) {
+                thisWeeklyWins++;
+            }
+            if (TCGameList[i].ToWin == TCGameList[i].Result) {
+                thisWeeklyWins++;
+            }
+            if (TSGameList[i].ToWin == TSGameList[i].Result) {
+                thisWeeklyWins++;
+            }
 
-        weeklyWinningGames.push(thisWeeklyWins);
+            weeklyWinningGames.push(thisWeeklyWins);
+        }
     }
 
     var weeklyAvgWins = 0;
@@ -802,8 +812,8 @@ function Game(name, date, home, away, toWin, result, homeScore, awayScore, odds)
     this.Away = (away == undefined ? '' : away);
     this.ToWin = (toWin == undefined ? '' : toWin);
     this.Result = (result == undefined ? '' : result);
-    this.HomeScore = (homeScore == undefined ? 0 : homeScore);
-    this.AwayScore = (awayScore == undefined ? 0 : awayScore);
+    this.HomeScore = (homeScore == undefined || homeScore == "" ? 0 : homeScore);
+    this.AwayScore = (awayScore == undefined || awayScore == "" ? 0 : awayScore);
 
     if (odds == undefined) {
         odds = "&nbsp;";
