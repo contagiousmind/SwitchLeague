@@ -184,6 +184,7 @@ function BuildLeague() {
 
     // and just go backwards for 5 to get the last 5?
     // need to do ALL of them at once
+    var predictsIn = false;
 
     for (g = 0; g < gamesArray.length; g++){
         var Last5 = '';
@@ -209,6 +210,7 @@ function BuildLeague() {
 
 
             if (gamesArray[g][i].Result == "") {
+                predictsIn = true;
                 continue;
             }
 
@@ -337,6 +339,10 @@ function BuildLeague() {
                             '<span>&cross;</span>' +
                         '</div>';
 
+    var last5PredictDiv = '<div class="last5outer predict">' +
+                            '<span>?</span>' +
+                        '</div>';
+
     var leaguePos = 0;
     for (l = leagueList.length-1; l > -1; l--) {
         leaguePos++;
@@ -349,6 +355,10 @@ function BuildLeague() {
                                             .replace(/W/g, last5WinDiv)
                                             .replace(/L/g, last5LoseDiv)
                                         ;
+
+        if (predictsIn) {
+            last5Html += last5PredictDiv;
+        }
 
         html += leagueRowTemplate.replace('$ID$', leaguePos)
                                 .replace('$HEADER$', leader)

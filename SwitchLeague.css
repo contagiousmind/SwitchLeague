@@ -208,14 +208,20 @@
         color: #fff;
         font-weight: 700;
         font-size: .75em;
+        width:20px;
     }
 
     .leaguerow .last5 .last5inner .last5outer.win {
         background-color: green;
+        font-size: .75em;
     }
 
     .leaguerow .last5 .last5inner .last5outer.lose {
         background-color: red;
+    }
+
+    .leaguerow .last5 .last5inner .last5outer.predict {
+        background-color: grey;
     }
 
     .leaguerow .change {
