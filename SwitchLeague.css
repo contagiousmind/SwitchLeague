@@ -80,7 +80,7 @@
 .gamesouter {
     float:left;
     width:100%;
-    margin-top:10%;
+    margin-top:5%;
 }
 
 .leaguerow {
@@ -450,3 +450,113 @@
     text-align: center;
     padding: 5px 0;
 }
+
+.pickleagueouter {
+    float:left;
+    margin-top: 5%;
+    
+}
+
+.pickleaguerow {
+    float: left;
+    width: 100%;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    border-left: 2px solid #e3e3e3;
+    border-right: 2px solid #e3e3e3;
+    font-size: 1.5em;
+
+}
+
+    .pickleaguerow:hover {
+        background-color: var(--pink);
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .pickleaguerow.header {
+        float: left;
+        width: 100%;
+        background-color: var(--red);
+        color: #fff;
+    }
+
+    .pickleaguerow.leader {
+        float: left;
+        width: 100%;
+        background-color: var(--blue);
+        color: #fff;
+    }
+
+    .pickleaguerow.leader2 {
+        float: left;
+        width: 100%;
+        background-color: var(--redhalf);
+    }
+
+    .pickleaguerow .spacer {
+        float: left;
+        width: 20%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .pickleaguerow .id {
+        float: left;
+        width: 5%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .pickleaguerow .name {
+        float: left;
+        width: 25%;
+        border-right: 2px solid #e3e3e3;
+        padding: 5px 0 5px 15px;
+    }
+
+    .pickleaguerow .wl {
+        float: left;
+        width: 10%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .pickleaguerow .prc {
+        float: left;
+        width: 10%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .pickleaguerow .gf {
+        float: left;
+        width: 5%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .pickleaguerow .ga {
+        float: left;
+        width: 5%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .pickleaguerow .gd {
+        float: left;
+        width: 5%;
+        border-right: 2px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .pickleaguerow.selected {
+        border-color: var(--pink);
+    }

@@ -86,6 +86,10 @@ function SetupGames(data) {
     // can we build some totals too?
     BuildTotals();
 
+
+    // and can we find out the most picked team, and most wins losses etc...
+    BuildTotalPicks();
+
 } 
 
 function GetData(sheetName, completeEvent) {
@@ -810,7 +814,115 @@ function reduce(numerator,denominator){
   return [numerator/gcd, denominator/gcd];
 }
 
+function BuildTotalPicks() {
+    var pickTotalList = new Array();
 
+
+    var gamesArray = new Array();
+    gamesArray.push(SMGameList);
+    gamesArray.push(RCGameList);
+    gamesArray.push(TCGameList);
+    gamesArray.push(TSGameList);
+
+    for(i = 0; i < gamesArray.length; i++) {
+        for(ii = 0; ii < gamesArray[i].length; ii++) {
+            var thisTeam = gamesArray[i][ii].Home;
+            if (gamesArray[i][ii].ToWin == "A") {
+                thisTeam = gamesArray[i][ii].Away;
+            }
+            var isWin = (gamesArray[i][ii].ToWin == gamesArray[i][ii].Result);
+
+            // find this team in the list...
+            var isFound = false;
+            for(iii = 0; iii < pickTotalList.length; iii++) {
+                if (pickTotalList[iii].Team == thisTeam) {
+                    isFound = true;
+                    pickTotalList[iii].Total ++;
+                    if (isWin) {
+                        pickTotalList[iii].Win ++;
+                    } else {
+                        pickTotalList[iii].Loss ++;
+                    }
+                    break;
+                }
+            }
+
+            if (!isFound) {
+                pickTotalList.push(new PickTotal(
+                                    thisTeam
+                                    , 1
+                                    , (isWin ? 1 : 0)
+                                    , (!isWin ? 1 : 0)
+                            ));
+            }
+        }
+    }
+
+    // then do the percentages...
+    var topPercent = -1;
+    var secondPercent = -1;
+    for(i = 0; i < pickTotalList.length; i++) {
+        pickTotalList[i].Percent = pickTotalList[i].Win / (pickTotalList[i].Win + pickTotalList[i].Loss);
+
+        if (pickTotalList[i].Percent >= topPercent) {
+            topPercent = pickTotalList[i].Percent;
+        } else if (pickTotalList[i].Percent >= secondPercent) {
+            secondPercent = pickTotalList[i].Percent;
+        }
+    }
+
+    // go get the top 3 percentages to highlight?...
+
+
+    // now sort by most picks, and build it...
+    // https://typeofnan.dev/sort-array-objects-multiple-properties-javascript/
+    pickTotalList.sort((b, a) => {
+        // Only sort on Points if not identical
+        if (a.Total < b.Total) return -1;
+        if (a.Total > b.Total) return 1;
+
+        return 0;
+    });
+
+    var pickRowTemplate = $("#PickLeagueRow_Template").html();
+    var html = '';
+
+    // header
+       html += pickRowTemplate.replace('$ID$', '&nbsp;')
+                            .replace('$HEADER$', 'header')
+                            .replace(/\$NAME\$/g, 'Team')
+                            .replace(/\$TOTAL\$/g, 'Total')
+                            .replace('$WL$', 'W-L')
+                            .replace('$PRC$', 'PRC')
+                        ;
+
+    // just show top 10?
+    var pickLimit = 19;
+    for(i = 0; i < pickTotalList.length; i++) {
+
+        // mark the top percents...
+        var leader = '';
+        if (pickTotalList[i].Percent == topPercent) {
+            leader = 'leader';
+        } else if (pickTotalList[i].Percent == secondPercent) {
+            leader = 'leader2';
+        }
+
+        html += pickRowTemplate.replace('$ID$', (i+1))
+                                .replace('$HEADER$', leader)
+                                .replace(/\$NAME\$/g, pickTotalList[i].Team)
+                                .replace(/\$TOTAL\$/g, pickTotalList[i].Total)
+                                .replace('$WL$', pickTotalList[i].Win + '-' + pickTotalList[i].Loss)
+                                .replace('$PRC$', pickTotalList[i].Percent.toString().substring(0,5))
+                            ;
+        if (i >= pickLimit) {
+            break;
+        }
+    }
+
+    $("#PickLeagueOuter").html(html);
+
+}
 
 
 
@@ -854,6 +966,13 @@ function Record(correct, wrong) {
     this.Wrong = wrong;
 }
 
+function PickTotal(team, total, win, loss) {
+    this.Team = team;
+    this.Total = total;
+    this.Win = win;
+    this.Loss = loss;
+    this.Percent = 0.00;
+}
 
 
 
