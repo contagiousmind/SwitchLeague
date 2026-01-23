@@ -609,11 +609,15 @@ function BuildGames(gameList) {
                         .replace(/\$HOMETEAM\$/g, gameList[i].Home)
                         .replace(/\$HOMEWIN\$/g, homeWin)
                         .replace(/\$HOMELOSE\$/g, homeLose)
+                        //.replace(/\$HOMESCOREWIN\$/g, homeWin)
+                        //.replace(/\$HOMESCORELOSE\$/g, homeLose)
                         .replace(/\$HOMESCORE\$/g, gameList[i].HomeScore)
 
                         .replace(/\$AWAYTEAM\$/g, gameList[i].Away)
                         .replace(/\$AWAYWIN\$/g, awayWin)
                         .replace(/\$AWAYLOSE\$/g, awayLose)
+                        //.replace(/\$AWAYSCOREWIN\$/g, awayWin)
+                        //.replace(/\$AWAYSCORELOSE\$/g, awayLose)
                         .replace(/\$AWAYSCORE\$/g, gameList[i].AwayScore)
                         
                         .replace(/\$HOMERECORDWRONG\$/g, homeRecord.Wrong)

@@ -358,7 +358,15 @@
         width: 5%;
         border-right: 2px solid #e3e3e3;
         text-align: center;
-        padding: 5px 0;
+        padding: 7.5px 0;
+    }
+
+    .scorerow .homescore.win {
+        background-color: var(--bluehalf);;
+    }
+
+    .scorerow .homescore.lose {
+        background-color: var(--redhalf);
     }
 
     .scorerow .awayteam {
@@ -404,6 +412,14 @@
         border-right: 2px solid #e3e3e3;
         text-align: center;
         padding: 5px 0;
+    }
+
+    .scorerow .awayscore.win {
+        background-color: var(--bluehalf);;
+    }
+
+    .scorerow .awayscore.lose {
+        background-color: var(--redhalf);
     }
 
     .scorerow .odds {
