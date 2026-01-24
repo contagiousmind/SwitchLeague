@@ -818,6 +818,7 @@ function reduce(numerator,denominator){
   return [numerator/gcd, denominator/gcd];
 }
 
+
 function BuildTotalPicks() {
     var pickTotalList = new Array();
 
@@ -830,6 +831,12 @@ function BuildTotalPicks() {
 
     for(i = 0; i < gamesArray.length; i++) {
         for(ii = 0; ii < gamesArray[i].length; ii++) {
+
+            // if this is a prediction, skip it
+            if (gamesArray[i][ii].Result == "") {
+                continue;
+            }
+
             var thisTeam = gamesArray[i][ii].Home;
             if (gamesArray[i][ii].ToWin == "A") {
                 thisTeam = gamesArray[i][ii].Away;
