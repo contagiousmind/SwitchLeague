@@ -819,7 +819,11 @@ function reduce(numerator,denominator){
 }
 
 
-function BuildTotalPicks() {
+function BuildTotalPicks(sortOrder) {
+    if (sortOrder == undefined) {
+        sortOrder = 1;
+    }
+
     var pickTotalList = new Array();
 
 
@@ -887,13 +891,24 @@ function BuildTotalPicks() {
 
     // now sort by most picks, and build it...
     // https://typeofnan.dev/sort-array-objects-multiple-properties-javascript/
-    pickTotalList.sort((b, a) => {
-        // Only sort on Points if not identical
-        if (a.Total < b.Total) return -1;
-        if (a.Total > b.Total) return 1;
+    if (sortOrder == 1) {
+         pickTotalList.sort((b, a) => {
+            // Only sort on Points if not identical
+            if (a.Total < b.Total) return -1;
+            if (a.Total > b.Total) return 1;
 
-        return 0;
-    });
+            return 0;
+        });
+
+    } else if (sortOrder == 2) {
+        pickTotalList.sort((b, a) => {
+            // Only sort on Points if not identical
+            if (a.Percent < b.Percent) return -1;
+            if (a.Percent > b.Percent) return 1;
+
+            return 0;
+        });
+    }
 
     var pickRowTemplate = $("#PickLeagueRow_Template").html();
     var html = '';
@@ -905,6 +920,8 @@ function BuildTotalPicks() {
                             .replace(/\$TOTAL\$/g, 'Total')
                             .replace('$WL$', 'W-L')
                             .replace('$PRC$', 'PRC')
+                            .replace('$click1$', 'onclick="BuildTotalPicks(1)";')
+                            .replace('$click2$', 'onclick="BuildTotalPicks(2)";')
                         ;
 
     // just show top 10?
@@ -925,6 +942,8 @@ function BuildTotalPicks() {
                                 .replace(/\$TOTAL\$/g, pickTotalList[i].Total)
                                 .replace('$WL$', pickTotalList[i].Win + '-' + pickTotalList[i].Loss)
                                 .replace('$PRC$', pickTotalList[i].Percent.toString().substring(0,5))
+                                .replace('$click1$', '')
+                                .replace('$click2$', '')
                             ;
         if (i >= pickLimit) {
             break;
