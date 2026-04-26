@@ -114,6 +114,10 @@
         color: #fff;
     }
 
+    .leaguerow.header .streak .maxstreak{
+        display:none;
+    }
+
     .leaguerow .id {
         float: left;
         width: 5%;
@@ -185,6 +189,33 @@
         text-align: center;
         padding: 5px 0;
     }
+
+    .leaguerow .streak .maxstreak {
+        float: left;
+        text-align: center;
+        align-content: center;
+        width: 20%;
+        text-align: center;
+        font-size:0.75em;
+        border:2px solid #fff;
+        color: #fff;
+        font-weight: 400;
+        border-radius: 50%;
+        width:20px;
+        height:20px;
+    }
+
+    .leaguerow .streak .maxstreak.lose {
+        background-color: red;
+        margin: 8px 0 0 5px;
+    }
+
+    .leaguerow .streak .maxstreak.win {
+        float: right;
+        background-color: green;
+        margin-right:5px;
+    }
+
 
     .leaguerow .last5 {
         float: left;

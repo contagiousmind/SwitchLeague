@@ -382,8 +382,61 @@ function BuildLeague() {
 
     $('#LeagueOuter').html(html);
 
-
+    // and then can we build streak maxes?
+    BuildStreakMaxes(gamesArray);
 }
+
+
+function BuildStreakMaxes(gamesArray) {
+
+    // can we pull out the longest win and lose streaks to show?
+    for (g = 0; g < gamesArray.length; g++) {
+        var w = 0;
+        var maxW = 0;
+        var l = 0;
+        var maxL = 0;
+        var lastResult = '';
+
+
+        for (gg = 0; gg < gamesArray[g].length; gg++) {
+            if (gamesArray[g][gg].Result == gamesArray[g][gg].ToWin ) {
+                // win
+                if (lastResult == 'w') {
+                    w++;
+                } else {
+                    w = 1;
+                } 
+
+                if (w > maxW) {
+                    maxW = w;
+                }
+
+                lastResult = 'w';
+
+            } else {
+                // lose
+                if (lastResult == 'l') {
+                    l++;
+                } else {
+                    l = 1;
+                } 
+
+                if (l > maxL) {
+                    maxL = l;
+                }
+
+                lastResult = 'l';
+            }
+        }
+
+        // set the html values...
+        $("#StreakWin_" + gamesArray[g][0].Name).html(maxW);
+        $("#StreakLose_" + gamesArray[g][0].Name).html(maxL);
+    }
+}
+
+
+
 
 function CalculateLeagueRow(gamesArray) {
     // gamesArray is a list of one weeks games, one for easy user
