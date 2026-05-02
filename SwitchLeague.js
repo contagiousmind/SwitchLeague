@@ -651,8 +651,13 @@ function BuildGames(gameList) {
         var awayRecord = GetRecord(gameList[i].Away);
 
         var thisDate = new Date(gameList[i].Date);
-        var dateArray = thisDate.toDateString().split(' ');     // Sat Sept 20 2025
+        // var dateArray = thisDate.toDateString().split(' ');     // Sat Sept 20 2025
+        var dateArray = thisDate.toString().split(' ');             // "Sat May 02 2026 12:30:00 GMT+0100 (British Summer Time)"
         var dateDisplay = dateArray[1] + ' ' + dateArray[2];
+
+        if (gameList[i].Date.length > 10) {
+            dateDisplay += ' ' + dateArray[4].substring(0,5);
+        }
 
 
         html += template.replace(/\$HEADER\$/g, "")
