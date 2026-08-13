@@ -3,8 +3,14 @@ $(function () {
 
     // SetupGames_Year1();
     // do we put previous seasons into url param?
+    var searchParams = new URLSearchParams(window.location.search);
+    var seasonNo = 3;
+    if (searchParams.has('s')) {
+        seasonNo = searchParams.get('s');
+    }
 
-    GetData('Season3', SetupGames);
+    GetData('Season' + seasonNo, SetupGames);
+    $(".titlebottomleft span").html('Season ' + seasonNo);
     
 });
 
