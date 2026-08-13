@@ -2,8 +2,9 @@
 $(function () {
 
     // SetupGames_Year1();
+    // do we put previous seasons into url param?
 
-    GetData('Season2', SetupGames);
+    GetData('Season3', SetupGames);
     
 });
 
